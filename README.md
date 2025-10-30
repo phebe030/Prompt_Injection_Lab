@@ -1,10 +1,9 @@
 # Prompt Injection Lab
+Hands-on lab for learning and experimenting with prompt injection attacks and defenses for LLM (Large Language Model) applications.
 
-Hands-on lab for learning and experimenting with prompt injection attacks and defenses for LLM applications. The project provides:
-
-- An interactive React frontend for attacker/defender modes
+- An interactive React frontend with attacker/defender modes
 - A FastAPI backend implementing challenge scenarios and a pluggable defense system
-- An Ollama-based local LLM runtime (pulls `llama3.2:1b` by default)
+- A local LLM runtime powered by Ollama (pulls llama3.2:1b by default)
 - Docker Compose for one-command startup
 
 ## Architecture
@@ -84,41 +83,12 @@ npm run dev
 
 Open the dev server URL printed by Vite (commonly http://localhost:5173). The backend uses permissive CORS, so the frontend can talk to `http://localhost:8001` directly during development.
 
-## Using the App
+## How to use
 
 The frontend exposes two modes: Attacker and Defender.
 
 - Attacker: attempt to complete prompt-injection challenges
 - Defender: upload, toggle, and inspect defense plugins that sanitize inputs/outputs
-
-### Backend API (summary)
-
-Base URL when running locally:
-
-- Direct: `http://localhost:8001`
-
-Attacker routes:
-
-- `GET /attacker/` — list all challenges
-- `GET /attacker/score` — current attacker score
-- `GET /attacker/{challenge_id}` — details for one challenge
-- `POST /attacker/{challenge_id}/process` — process a prompt for a challenge
-  - Body (JSON): `{ "prompt": string, "system_instruction"?: string, "max_tokens"?: number }`
-- `POST /attacker/{challenge_id}/validate_key?key=...` — validate a discovered key (increments attacker score on success)
-- `POST /attacker/{challenge_id}/upload` — upload a file (for indirect challenge)
-
-Defender routes:
-
-- `GET /defender/defenses` — list loaded plugins and their status
-- `POST /defender/defenses/upload?plugin_name=Name` — upload a plugin file (`multipart/form-data`)
-- `POST /defender/defenses/toggle?plugin_name=Name` — toggle a plugin’s active status
-- `GET /defender/defenses/{plugin_name}` — get plugin info
-- `GET /defender/defenses/{plugin_name}/code` — fetch plugin source code
-- `DELETE /defender/defenses/{plugin_name}` — delete a plugin
-
-LLM routes (not enabled by default):
-
-- The `llmapi` router exists but is not included in `app.main`. Ollama is called internally by challenges/defenses.
 
 ### Example calls
 
@@ -200,6 +170,7 @@ ollama-entrypoint.sh      # Starts Ollama and pulls the model
 
 ## License
 
-Add your license here.
+This project is intended for educational and research purposes only.  
+You may use or modify it for personal learning, but **commercial use is not allowed**.
 
 
