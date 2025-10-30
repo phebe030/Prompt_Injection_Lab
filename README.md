@@ -6,6 +6,10 @@ Hands-on lab for learning and experimenting with prompt injection attacks and de
 - A local LLM runtime powered by Ollama (pulls llama3.2:1b by default)
 - Docker Compose for one-command startup
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/yourname/prompt-injection-lab/main/path/to/your-image.png" width="800" />
+</p>
+
 ## Architecture
 
 ```
