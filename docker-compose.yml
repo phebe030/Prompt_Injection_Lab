@@ -1,0 +1,35 @@
+services:
+  frontend:
+    image: franc0106/prompt-injection-lab:frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5174:5174"
+    depends_on:
+      - backend
+
+  backend:
+    image: franc0106/prompt-injection-lab:backend
+    volumes:
+      - ./backend/app/defenses/plugins:/app/backend/app/defenses/plugins
+    command: ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001"]
+    working_dir: /app/backend
+    ports:
+      - "8001:8001"
+    environment:
+      - OLLAMA_HOST=ollama
+    depends_on:
+      - ollama
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./ollama-entrypoint.sh:/ollama-entrypoint.sh:ro
+    entrypoint: ["/bin/sh", "/ollama-entrypoint.sh"]
+
+volumes:
+  ollama_data:

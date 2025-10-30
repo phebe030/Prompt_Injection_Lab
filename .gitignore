@@ -1,0 +1,15 @@
+venv/
+*.dylib
+.cursor/rules
+__pycache__/
+model_cache/
+*.log
+
+.env
+
+node+modules/
+build/
+dist/
+.env.local
+
+.DS_Store
