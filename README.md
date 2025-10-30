@@ -7,7 +7,8 @@ Hands-on lab for learning and experimenting with prompt injection attacks and de
 - Docker Compose for one-command startup
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/yourname/prompt-injection-lab/main/path/to/your-image.png" width="800" />
+  <img src="https://raw.githubusercontent.com/phebe030/Prompt_Injection_Lab/main/Frontend_dialog.png" width="45%" />
+  <img src="https://raw.githubusercontent.com/phebe030/Prompt_Injection_Lab/main/Result_DefensePage.png" width="45%" />
 </p>
 
 ## Architecture
